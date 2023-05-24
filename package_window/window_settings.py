@@ -14,22 +14,15 @@ class LOGGING:
 
     def check_log_data_result(self, login, password):
         with self.driver.session() as session:
-            sucess = session.execute_write(self.check_log_data,login,password)
-            print(sucess)
-
-    def check_log_data(tx, login, password):
-        result = tx.run("Match (n:LogData)"
-                        "Where n.username = $username"
-                        "and n.password = $password"
-                        "return n",username=login,password=password)
-        return result.single()[0]
+            sucess=session.run("Match (n:LogData) Where n.username = $username and n.password = $password return n",username=login,password=password)
+            print(sucess.single())
 
 
 
 
 class Form(QDialog):
 
-    connect = LOGGING("bolt://localhost:7687",'neo4j','zBLSkWWE91Z9mo_3CqQQi8RW-AM9NbMltXocxlvx8VE')
+    connect = LOGGING("neo4j+s://6d5091ae.databases.neo4j.io:7687",'neo4j','zBLSkWWE91Z9mo_3CqQQi8RW-AM9NbMltXocxlvx8VE')
 
     def __init__(self, parent = None, login = None, password = None, button = None, label1= None, label2 = None):
         super(Form, self).__init__(parent)
