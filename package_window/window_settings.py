@@ -15,7 +15,8 @@ class LOGGING:
     def check_log_data_result(self, login, password):
         with self.driver.session() as session:
             sucess=session.run("Match (n:LogData) Where n.username = $username and n.password = $password return n",username=login,password=password)
-            print(sucess.single())
+            result = (sucess.single())
+            return result
 
 
 
@@ -44,13 +45,17 @@ class Form(QDialog):
         print("login atemppted")
         print(f"login:{self.login.text()}")
         print(f"password:{self.password.text()}")
-        self.connect.check_log_data_result(self.login.text(),self.password.text())
-
-
+        result = self.connect.check_log_data_result(self.login.text(),self.password.text())
+        if result == None:
+            print("logowanie nieudane")
+        else:
+            print("logwanie powiodlo sie")
+            print(result)
+            self.connect.close()
+            self.close()
 
 def appconfig():
     app = QApplication(sys.argv)
     form = Form()
     form.show()
-    sys.exit(app.exec())
-
+    app.exec()
