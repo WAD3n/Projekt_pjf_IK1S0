@@ -1,6 +1,5 @@
 import sys
 from neo4j import GraphDatabase
-from PySide6.QtCore import Qt, Signal, Slot
 from PySide6.QtWidgets import QApplication, QDialog, QLineEdit, QPushButton ,QVBoxLayout, QLabel
 
 
@@ -54,7 +53,7 @@ class Form(QDialog):
             self.connect.close()
             self.close()
 
-def appconfig():
+def logconfig():
     app = QApplication(sys.argv)
     form = Form()
     form.show()
