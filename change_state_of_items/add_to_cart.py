@@ -45,10 +45,17 @@ class MainWindow(QDialog):
         for i , kategoria in enumerate(data):
             item = QTableWidgetItem(kategoria)
             table.setItem(i, 0, item)
+        table.itemDoubleClicked.connect(lambda item: self.item_clicked(item))
         table.show()
         layout.addWidget(table)
         layout.addWidget(self.button)
         print(data)
+
+    def item_clicked(self, item):
+        print("pressed item :", item.text())
+        self.connect.close()
+        self.deleteLater()
+        self.close()
 
     def go_home(self):
         print("nacisnieto")
