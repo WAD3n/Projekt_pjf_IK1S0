@@ -18,23 +18,6 @@ class LOGGING:
         with self.driver.session() as session:
             sucess=session.run("CREATE (n:SELECTION {choice: $choice})", choice=wybor)
 
-
-@Slot()
-def Exit():
-    print("wyjscie")
-    exit()
-def function1():
-    print("1 wcisniety")
-    MyWindow.close()
-    #QtWidgets.QApplication.instance().quit()
-    add_to_cart.window_function()
-
-def function2():
-    print("2 wcisniety")
-
-def function3():
-    print("3 wcisniety")
-
 class MyWindow(QtWidgets.QMainWindow):
 
 
@@ -43,15 +26,27 @@ class MyWindow(QtWidgets.QMainWindow):
         super().__init__()
         # Inicjalizacja interfejsu użytkownika z pliku .ui
         uic.loadUi("home.ui", self)
-        self.pushButton_4.clicked.connect(Exit)
+        self.pushButton_4.clicked.connect(self.button4_pressed)
         self.pushButton.clicked.connect(self.button_pressed)
-        self.pushButton_2.clicked.connect(function2)
-        self.pushButton_3.clicked.connect(function3)
+        self.pushButton_2.clicked.connect(self.button2_pressed)
+        self.pushButton_3.clicked.connect(self.button3_pressed)
     def button_pressed(self):
         self.connect.create_node_choice(1)
         self.connect.close()
         self.close()
+    def button2_pressed(self):
+        self.connect.create_node_choice(2)
+        self.connect.close()
+        self.close()
 
+    def button3_pressed(self):
+        self.connect.create_node_choice(3)
+        self.connect.close()
+        self.close()
+    def button4_pressed(self):
+        self.connect.create_node_choice(4)
+        self.connect.close()
+        self.close()
 def function():
     app = QtWidgets.QApplication([])
     window = MyWindow()

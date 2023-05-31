@@ -31,6 +31,9 @@ if __name__ == "__main__":
     connect = LOGGING("neo4j+s://6d5091ae.databases.neo4j.io:7687", 'neo4j',
                       'zBLSkWWE91Z9mo_3CqQQi8RW-AM9NbMltXocxlvx8VE')
     logging.logconfig()
+    app = QApplication.instance()
+    app.quit()
+    app.exit()
     print("main is running")
     while(1):
         value = home.function()
@@ -42,3 +45,7 @@ if __name__ == "__main__":
             pass
         elif wybor ==3:
             pass
+        elif wybor == 4:
+            connect.close()
+            print("exit")
+            exit()
