@@ -2,6 +2,7 @@ import sys
 from neo4j import GraphDatabase
 from PySide6.QtWidgets import QApplication, QDialog, QLineEdit, QPushButton ,QVBoxLayout, QLabel
 from PySide6.QtWidgets import (QApplication, QTableWidget, QTableWidgetItem)
+from items_in_category import products
 
 class LOGGING:
 
@@ -45,17 +46,17 @@ class MainWindow(QDialog):
         for i , kategoria in enumerate(data):
             item = QTableWidgetItem(kategoria)
             table.setItem(i, 0, item)
-        table.itemDoubleClicked.connect(lambda item: self.item_clicked(item))
+        table.itemDoubleClicked.connect(self.item_clicked)
         table.show()
         layout.addWidget(table)
         layout.addWidget(self.button)
         print(data)
 
     def item_clicked(self, item):
-        print("pressed item :", item.text())
+        print("pressed item:", item.text())
         self.connect.close()
-        self.deleteLater()
         self.close()
+        products.product_window(item)
 
     def go_home(self):
         print("nacisnieto")
@@ -63,7 +64,7 @@ class MainWindow(QDialog):
         self.deleteLater()
         self.close()
 
-def window_function():
+def category_function():
     app = QApplication.instance()
     if app is None:
         print("instancja nie istnieje")
@@ -73,10 +74,5 @@ def window_function():
         app.exec()
     else:
         print("instancja istnieje")
-        app.quit()
-        app.exit()
-        app.deleteLater()
-        app = QApplication(sys.argv)
         body = MainWindow()
-        body.show()
-        app.exec()
+        body.exec_()

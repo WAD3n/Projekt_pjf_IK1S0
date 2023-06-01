@@ -40,7 +40,7 @@ if __name__ == "__main__":
         wybor = LOGGING.get_choice(self=connect)
         print("choice:",wybor)
         if wybor == 1:
-            add_to_cart.window_function()
+            add_to_cart.category_function()
         elif wybor == 2:
             pass
         elif wybor ==3:
