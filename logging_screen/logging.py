@@ -14,6 +14,8 @@ class LOGGING:
     def check_log_data_result(self, login, password):
         with self.driver.session() as session:
             sucess=session.run("Match (n:LogData) Where n.username = $username and n.password = $password return n",username=login,password=password)
+            if sucess != None:
+                session.run("Match (n:LogData) Where n.username = $username and n.password = $password create (n)-[:zalagowany]->(n)",username=login,password=password)
             result = (sucess.single())
             return result
 

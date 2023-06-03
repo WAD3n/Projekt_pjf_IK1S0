@@ -17,6 +17,9 @@ class LOGGING:
     def create_node_choice(self, wybor):
         with self.driver.session() as session:
             sucess=session.run("CREATE (n:SELECTION {choice: $choice})", choice=wybor)
+    def logout(self):
+        with self.driver.session() as session:
+            session.run("match ()-[n:zalagowany]->() delete n")
 
 class MyWindow(QtWidgets.QMainWindow):
 
@@ -44,6 +47,7 @@ class MyWindow(QtWidgets.QMainWindow):
         self.connect.close()
         self.close()
     def button4_pressed(self):
+        self.connect.logout()
         self.connect.create_node_choice(4)
         self.connect.close()
         self.close()
