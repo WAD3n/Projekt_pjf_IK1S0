@@ -26,6 +26,8 @@ class LOGGING:
 from logging_screen import logging
 from home_screen import home
 from change_state_of_items import add_to_cart
+from show_cart import showcart
+from history import hisotry_of_shopping
 
 if __name__ == "__main__":
     connect = LOGGING("neo4j+s://6d5091ae.databases.neo4j.io:7687", 'neo4j',
@@ -42,9 +44,9 @@ if __name__ == "__main__":
         if wybor == 1:
             add_to_cart.category_function()
         elif wybor == 2:
-            pass
+            showcart.cart_window()
         elif wybor ==3:
-            pass
+            hisotry_of_shopping.hisotry_function()
         elif wybor == 4:
             connect.close()
             print("exit")

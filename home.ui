@@ -6,8 +6,8 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>1358</width>
-    <height>820</height>
+    <width>1231</width>
+    <height>821</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -24,7 +24,7 @@
      </rect>
     </property>
     <property name="text">
-     <string>opcja 1</string>
+     <string>Wyświetl Produkty</string>
     </property>
    </widget>
    <widget class="QPushButton" name="pushButton_2">
@@ -37,7 +37,7 @@
      </rect>
     </property>
     <property name="text">
-     <string>opcja 2</string>
+     <string>Wyświetl Koszyk</string>
     </property>
    </widget>
    <widget class="QPushButton" name="pushButton_3">
@@ -46,11 +46,11 @@
       <x>620</x>
       <y>-20</y>
       <width>301</width>
-      <height>771</height>
+      <height>791</height>
      </rect>
     </property>
     <property name="text">
-     <string>opcja 3</string>
+     <string>Historia Zakupów</string>
     </property>
    </widget>
    <widget class="QPushButton" name="pushButton_4">
@@ -59,11 +59,11 @@
       <x>930</x>
       <y>-40</y>
       <width>301</width>
-      <height>771</height>
+      <height>811</height>
      </rect>
     </property>
     <property name="text">
-     <string>exit</string>
+     <string>wyjście</string>
     </property>
    </widget>
   </widget>
@@ -72,7 +72,7 @@
     <rect>
      <x>0</x>
      <y>0</y>
-     <width>1358</width>
+     <width>1231</width>
      <height>22</height>
     </rect>
    </property>

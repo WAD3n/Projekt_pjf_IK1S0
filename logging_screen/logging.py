@@ -19,6 +19,13 @@ class LOGGING:
             result = (sucess.single())
             return result
 
+    def create_acc(self,login,password):
+        with self.driver.session() as session:
+            session.run("create (n:LogData {username: $username,password: $password})",username=login,password=password)
+            session.run("match (n:LogData) where n.username = $username create (n)-[:shopping_cart]->(:Koszyk)",username=login)
+            session.run("match (n:LogData) where n.username = $username create (n)-[:user_info]->(:UserData)",username=login)
+            session.run("match (n:LogData) where n.username = $username create (n)-[:bought]->(:Historia_zakupow)",username=login)
+            print("ACCOUNT CREATED")
 
 
 
@@ -34,14 +41,16 @@ class Form(QDialog):
         self.label2 = QLabel("password")
         self.password = QLineEdit("")
         self.button = QPushButton("Enter")
+        self.button2 = QPushButton("CREATE ACCOUNT")
         layout = QVBoxLayout(self)
         layout.addWidget(self.label1)
         layout.addWidget(self.login)
         layout.addWidget(self.label2)
         layout.addWidget(self.password)
         layout.addWidget(self.button)
+        layout.addWidget(self.button2)
         self.button.clicked.connect(self.button_pressed)
-
+        self.button2.clicked.connect(self.button2_pressed)
     def button_pressed(self):
         print("login atemppted")
         print(f"login:{self.login.text()}")
@@ -54,6 +63,8 @@ class Form(QDialog):
             print(result)
             self.connect.close()
             self.close()
+    def button2_pressed(self):
+        self.connect.create_acc(self.login.text(),self.password.text())
 
 def logconfig():
     app = QApplication(sys.argv)
